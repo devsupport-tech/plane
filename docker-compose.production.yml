@@ -7,13 +7,13 @@ services:
     container_name: plane-web
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_BASE_URL: ${API_BASE_URL:-http://localhost:8000}
-      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost:3000}
-      NEXT_PUBLIC_ADMIN_BASE_URL: ${ADMIN_BASE_URL:-http://localhost:3001}
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost/api}
+      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost}
+      NEXT_PUBLIC_ADMIN_BASE_URL: ""
       NEXT_PUBLIC_ADMIN_BASE_PATH: ${ADMIN_BASE_PATH:-/god-mode}
-      NEXT_PUBLIC_SPACE_BASE_URL: ${SPACE_BASE_URL:-http://localhost:3002}
+      NEXT_PUBLIC_SPACE_BASE_URL: ""
       NEXT_PUBLIC_SPACE_BASE_PATH: ${SPACE_BASE_PATH:-/spaces}
-      NEXT_PUBLIC_LIVE_BASE_URL: ${LIVE_BASE_URL:-http://localhost:3100}
+      NEXT_PUBLIC_LIVE_BASE_URL: ""
       NEXT_PUBLIC_LIVE_BASE_PATH: ${LIVE_BASE_PATH:-/live}
     depends_on:
       - api
@@ -26,10 +26,10 @@ services:
     container_name: plane-admin
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_BASE_URL: ${API_BASE_URL:-http://localhost:8000}
-      NEXT_PUBLIC_ADMIN_BASE_URL: ${ADMIN_BASE_URL:-http://localhost:3001}
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost/api}
+      NEXT_PUBLIC_ADMIN_BASE_URL: ""
       NEXT_PUBLIC_ADMIN_BASE_PATH: ${ADMIN_BASE_PATH:-/god-mode}
-      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost:3000}
+      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost}
     depends_on:
       - api
       - web
@@ -42,10 +42,10 @@ services:
     container_name: plane-space
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_API_BASE_URL: ${API_BASE_URL:-http://localhost:8000}
-      NEXT_PUBLIC_SPACE_BASE_URL: ${SPACE_BASE_URL:-http://localhost:3002}
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost/api}
+      NEXT_PUBLIC_SPACE_BASE_URL: ""
       NEXT_PUBLIC_SPACE_BASE_PATH: ${SPACE_BASE_PATH:-/spaces}
-      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost:3000}
+      NEXT_PUBLIC_WEB_BASE_URL: ${WEB_URL:-http://localhost}
     depends_on:
       - api
       - web
@@ -105,13 +105,13 @@ services:
       GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
       
       # URLs
-      ADMIN_BASE_URL: ${ADMIN_BASE_URL:-http://localhost:3001}
+      ADMIN_BASE_URL: ""
       ADMIN_BASE_PATH: ${ADMIN_BASE_PATH:-/god-mode}
-      SPACE_BASE_URL: ${SPACE_BASE_URL:-http://localhost:3002}
+      SPACE_BASE_URL: ""
       SPACE_BASE_PATH: ${SPACE_BASE_PATH:-/spaces}
-      APP_BASE_URL: ${APP_BASE_URL:-http://localhost:3000}
+      APP_BASE_URL: ${WEB_URL:-http://localhost}
       APP_BASE_PATH: ${APP_BASE_PATH:-}
-      LIVE_BASE_URL: ${LIVE_BASE_URL:-http://localhost:3100}
+      LIVE_BASE_URL: ""
       LIVE_BASE_PATH: ${LIVE_BASE_PATH:-/live}
       
       # Security
